@@ -1,0 +1,53 @@
+{% extends "users/base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--<div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+
+                    <div class="form-group">
+                        <label class="small mb-1">Faça upload do design desejado </label>
+                        <input type="file" name="projeto" class="form-control-file" accept="image/*" id="id_projeto ">
+                        {{ projeto }}
+                    </div>
+                    <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+        </form>
+    </div>-->
+    <!-- myapp/templates/myapp/criacao.html -->
+    <h2>Upload de Imagem e Lista</h2>
+
+    <!-- Formulário de Upload -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar Imagem</button>
+    </form>
+
+    <!-- Lista de Imagens -->
+    {% for image in images %}
+    <img src="{{ image.image.url }}" alt="{{ image.title }}">
+    {% endfor %}
+
+    
+</body>
+
+</html>
+
+{% endblock content %}

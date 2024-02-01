@@ -1,0 +1,14 @@
+<!-- myapp/templates/myapp/projetos.html -->
+<h2>Projetos</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ project_form.as_p }}
+
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form.as_table }}
+    {% endfor %}
+
+    <button type="submit">Salvar Projeto</button>
+</form>
